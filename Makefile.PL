@@ -9,7 +9,6 @@ WriteMakefile(
     PREREQ_PM             => {
         'Class::Accessor' => 0,
         'LWP::UserAgent'  => 0,
-        'URI'             => 0,
         'Test::More'      => 0,
     },
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005

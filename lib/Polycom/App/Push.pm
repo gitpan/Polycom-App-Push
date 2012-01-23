@@ -2,10 +2,9 @@ package Polycom::App::Push;
 use strict;
 use warnings;
 use LWP::UserAgent;
-use URI;
 use base qw(Class::Accessor);
 
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 ###################
 # Basic Accessors
@@ -20,10 +19,10 @@ sub new
     my ($class, %args) = @_;
 
     my $self = {
-        address => $args{address},
-        user    => $args{username},
-        pass    => $args{password},
-        ua      => LWP::UserAgent->new,
+        address   => $args{address},
+        username  => $args{username},
+        password  => $args{password},
+        ua        => LWP::UserAgent->new,
     };
 
     if (!defined $self->{address} || $self->{address} eq '')
@@ -59,27 +58,24 @@ sub push_message
         }
         $xml .= '</PolycomIPPhone>';
 
-        # Escape reserved characters in the XML
-        $xml = URI::Escape::uri_escape($xml);
-
         # Configure the user agent to communicate with the phone
-        $self->{ua}->credentials($self->{address},'PUSH Authentication', $self->{username}, $self->{password});
+        $self->{ua}->credentials($self->{address} . ':80', 'PUSH Authentication', $self->{username}, $self->{password});
 
         # Send the push request to the phone
         my $response = $self->{ua}->post(
-            'http://$self->{address}/push',
+            'http://' . $self->{address} . '/push',
+            'Content-Type' => 'application/x-com-polycom-spipx',
             Content        => $xml,
-            'Content-Type' => 'application/x-com-polycom-spipx'
         );
 
-        if ( $response->is_success )
+        if ($response->is_success)
         {
             $messagesSent++;
         }
         else
         {
-            print "Unable to send push request to $self->{address}. "
-                 ."Status code: $response->status_line";
+            print "Unable to send push request to http://$self->{address}/push. The response from the phone was:\n"
+		 . $response->as_string;
         }
     }
 
