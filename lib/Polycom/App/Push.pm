@@ -4,7 +4,7 @@ use warnings;
 use LWP::UserAgent;
 use base qw(Class::Accessor);
 
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 
 ###################
 # Basic Accessors
@@ -105,10 +105,23 @@ The C<Polycom::App::Push> class is for writing web applications for Polycom's So
 Note that to use the C<push_message> method, the phone must be configured with the following parameters, where the values of each parameters should be customized based on your requirements:
 
    <apps
-     apps.push.messageType="2"
-     apps.push.serverRootURL="/sampleapps"
-     apps.push.username="Bob"
-     apps.push.password="1234" />
+     apps.push.messageType="5"
+     apps.push.serverRootURL="http://192.168.1.11"
+     apps.push.username="Polycom"
+     apps.push.password="456" />
+
+The value of the 'C<apps.push.messageType>' parameter is very important, because it determines how the phone will filter incoming push messages based on their 'C<priority>' attributes. The allowable values for the 'C<apps.push.messageType>' parameter are: 
+
+   0 - Don't show any push messages
+   1 - Show messages with 'C<priority="normal">'
+   2 - Show messages with 'C<priority="important">'
+   3 - Show messages with 'C<priority="high">'
+   4 - Show messages with 'C<priority="critical">'
+   5 - Show all messages, regardless of their 'C<priority>' value
+
+The 'C<apps.push.serverRootURL>' parameter is used as the base URL for the relative URL passed to 'C<push_message>' method in its 'C<url>' parameter.
+
+The 'C<apps.push.username>' and 'C<apps.push.password>' parameters must match the 'C<username>' and 'C<password>' parameters passed to the 'C<push_message>' method.
 
 =head1 CONSTRUCTOR
 
@@ -160,6 +173,8 @@ Note that either C<url> or C<data> must be specified, but not both. Returns C<1>
 =head1 SEE ALSO
 
 I<Developer's Guide SoundPoint IP / SoundStation IP> - L<http://support.polycom.com/global/documents/support/setup_maintenance/products/voice/Web_Application_Developers_Guide_SIP_3_1.pdf>
+
+I<Polycom(R) UC Software Administrator's Guide> - L<http://support.polycom.com/global/documents/support/setup_maintenance/products/voice/spip_ssip_vvx_Admin_Guide_UCS_v4_0_0.pdf>
 
 C<Polycom::App::URI> - A module that can be used to generate XHTML documents for displaying custom softkeys and hyperlinks using internal URIs for Polycom phones.
 

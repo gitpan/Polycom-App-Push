@@ -1,11 +1,12 @@
-Polycom::App::Push version 0.02
+Polycom::App::Push version 0.03
 ================================
 
 This module can be used to help write web applications for Polycom's SoundPoint IP, SoundStation IP, and VVX 1500 VoIP phones.
 
-For more information about administering the Local Contact Directory on Polycom SoundPoint IP phones,
-see 
-http://support.polycom.com/global/documents/support/setup_maintenance/products/voice/Web_Application_Developers_Guide_SIP_3_1.pdf and http://support.polycom.com/global/documents/support/user/products/voice/Polycom_SDK_for_VVX1500_SpectraLink_8400_eng.pdf
+For more information about developing web applications for Polycom SoundPoint IP phones, see 
+http://support.polycom.com/global/documents/support/setup_maintenance/products/voice/Web_Application_Developers_Guide_SIP_3_1.pdf,
+http://support.polycom.com/global/documents/support/setup_maintenance/products/voice/spip_ssip_vvx_Admin_Guide_UCS_v4_0_0.pdf, and
+http://support.polycom.com/global/documents/support/user/products/voice/Polycom_SDK_for_VVX1500_SpectraLink_8400_eng.pdf
 
 INSTALLATION
 

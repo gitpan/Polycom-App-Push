@@ -5,3 +5,6 @@ Revision history for Perl extension Polycom::App
 
 0.02  Mon Jan 23 11:00:00 2012
     - Fixed some issues with Polycom::App::Push
+
+0.03  Mon Jan 29 11:00:00 2012
+    - Fixed an issue with the META.yml file

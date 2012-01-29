@@ -1,8 +1,8 @@
 ---
 name: Polycom-App-Push
-version: 0.02
+version: 0.03
 author: ["Zachary Blair <zblair@cpan.org>"]
-abstract: 'Module for writing web applications for Polycom's VoIP phones'
+abstract: 'Module for writing web applications for Polycom VoIP phones'
 license: perl
 distribution_type: module
 resources:
@@ -22,7 +22,7 @@ no_index:
 provides:
   Polycom::App::Push:
     file: lib/Polycom/App/Push.pm
-    version: 0.02
+    version: 0.03
   Polycom::App::URI:
     file: lib/Polycom/App/URI.pm
     version: 0.01
