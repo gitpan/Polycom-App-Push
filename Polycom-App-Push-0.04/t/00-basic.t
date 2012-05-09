@@ -3,7 +3,7 @@
 
 #########################
 
-use Test::More tests => 6;
+use Test::More tests => 7;
 BEGIN { use_ok('Polycom::App::URI') };
 BEGIN { use_ok('Polycom::App::Push') };
 
@@ -33,4 +33,7 @@ can_ok('Polycom::App::URI', qw(a softkeys));
 	is($message, $expected_message);
 }
 
-
+# Test that if incorrect parameters are passed to push_message, it will warn
+my $phone = Polycom::App::Push->new(address => '172.23.8.100', username=>'Polycom', password=>'456');
+eval { $phone->push_message({priority => 'normal'}) };
+ok($@ && $@ =~ /must be specified/, 'Polycom::App::Push::push_message() throws a warning with missing url, data, or uri_data parameter');

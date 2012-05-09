@@ -1,4 +1,4 @@
-Polycom::App::Push version 0.03
+Polycom::App::Push version 0.04
 ================================
 
 This module can be used to help write web applications for Polycom's SoundPoint IP, SoundStation IP, and VVX 1500 VoIP phones.
